@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  app:
+    build: ./market-order-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+      - price-feed
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: marketdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5432:5432"
+
+  price-feed:
+    build: ./price-feed-mock
+    ports:
+      - "8081:8081"

@@ -1,0 +1,9 @@
+# src/main/resources/application.yml
+
+resilience4j:
+  ratelimiter:
+    instances:
+      orderLimiter:
+        limitForPeriod: 10
+        limitRefreshPeriod: 1s
+        timeoutDuration: 0
